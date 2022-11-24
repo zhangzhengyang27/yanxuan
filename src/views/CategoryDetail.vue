@@ -1,9 +1,9 @@
 <template>
   <div>
-    <header-comp />
+    <header-comp/>
 
     <div class="item-list">
-      <product v-for="(item, index) in itemList" :key="index" :item="item" />
+      <product v-for="(item, index) in itemList" :key="index" :item="item"/>
     </div>
   </div>
 </template>
@@ -12,26 +12,32 @@
 import { API_CATE_DETAIL } from '@/api.config.js'
 import HeaderComp from '../components/Header'
 import Product from '../components/Product'
+
 export default {
   data () {
     return {
       itemList: []
     }
   },
-  components: { HeaderComp, Product },
+  components: {
+    HeaderComp,
+    Product
+  },
+  created () {
+    const {
+      cateId,
+      subId
+    } = this.$route.params
+    this.getCateDetail(cateId, subId)
+  },
   methods: {
     async getCateDetail (cateId, subId) {
       const { itemList } = await this.$axios.post(API_CATE_DETAIL, {
         cateId,
         subId
       })
-      //   console.log(itemList)
       this.itemList = itemList
     }
-  },
-  created () {
-    const { cateId, subId } = this.$route.params
-    this.getCateDetail(cateId, subId)
   }
 }
 </script>

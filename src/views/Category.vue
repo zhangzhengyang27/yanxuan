@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="cate">
+      <!-- 分类导航 -->
       <ul class="cate-nav">
         <li
           class="cate-nav-item"
@@ -11,17 +12,12 @@
         >{{ cate.name }}
         </li>
       </ul>
-
+      <!-- 分类列表 -->
       <ul class="cate-list" ref="cate-list">
         <li class="cate-list-item" v-for="sub in categoryGroupList" :key="sub.id">
           <div class="title">{{ sub.name }}</div>
           <ul class="sub-item">
-            <li
-              class="sub-item-detail"
-              v-for="item in sub.categoryList"
-              :key="item.id"
-              @click="getSubList(item.id)"
-            >
+            <li class="sub-item-detail" v-for="item in sub.categoryList" :key="item.id" @click="getSubList(item.id)">
               <img :src="item.prettyBannerUrl" alt class="ban"/>
               <div class="name">{{ item.name }}</div>
             </li>
@@ -71,6 +67,7 @@ export default {
       this.actived = index
     },
     async getSubCategory (categoryId) {
+      // 滚动位置复原
       const scrollContainer = this.$refs['cate-list']
       scrollContainer.scrollTop = '0px'
       const {
