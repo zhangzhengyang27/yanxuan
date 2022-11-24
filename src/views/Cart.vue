@@ -103,7 +103,6 @@ export default {
     async getCartDetail () {
       this.isLoading = true
       const res = await this.$axios.get(API_CART_DETAIL)
-      console.log(res)
       this.cartDetail = res
       this.isLoading = false
     },
@@ -158,7 +157,6 @@ export default {
           list,
           total: this.total
         })
-        // console.log(orderNo)
         this.$router.push(`/order/${orderNo}`)
       }
     }
