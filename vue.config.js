@@ -19,11 +19,11 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugins.delete('prefetch')
-  }
-  // publicPath: '/yx',
-  // outputDir: 'dest',
+  },
+  publicPath: './',
+  outputDir: 'dist',
   // indexPath: 'index2.html',
-  // productionSourceMap: false
+  productionSourceMap: false
 }
 
 // www.yanxuan.com/yx

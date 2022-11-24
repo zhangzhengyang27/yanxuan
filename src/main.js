@@ -16,7 +16,8 @@ Vue.use(ToastPlugin)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+// axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = 'http://yanxuan.xiecheng.live:7001'
 
 // 接口拦截
 axios.interceptors.response.use(response => {
